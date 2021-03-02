@@ -14,8 +14,10 @@
 
         <% if user.followed.pluck(:follower_id).include?(current_user.id) %><!--要検証-->
           <td><%= link_to 'フォローを外す', user_relationships_path(user), method: :delete %></td>
-        <% else %>
+        <% elsif user != current_user %>
           <td><%= link_to 'フォローをする', user_relationships_path(user), method: :post %></td>
+        <% else %>
+          <td><!--ただの空白--></td>
         <% end %>
 
         <td><%= link_to 'Show', user_path(user), class: "user_#{user.id}" %></td>
