@@ -1,6 +1,6 @@
 class RelationshipsController < ApplicationController
 
-  def reate
+  def create
   end
 
   def destroy
