@@ -8,9 +8,7 @@ class RelationshipsController < ApplicationController
   end
 
   def destroy
-    binding.pry
-    a = '123'
-    user = User.find(params[:id])
+    user = User.find(params[:user_id])# 質問 なぜparams[:id]じゃとれないのか？
     relationships = Relationship.find_by(followed: user, follower: current_user)
     relationships.destroy
     redirect_back(fallback_location: root_path)
