@@ -1,16 +1,17 @@
 class RelationshipsController < ApplicationController
 
   def create
-    relationships = Relationship.new(follower_id: current_user.id)
-    # binding.pry
-    # a = '123'
-    relationships.followed_id = User.find(params[:user_id])
+    relationships = Relationship.new(follower: current_user)
+    relationships.followed = User.find(params[:user_id])
     relationships.save
     redirect_back(fallback_location: root_path)
   end
 
   def destroy
-    relationships = Relationship.find_by(followed_user: params[:id], follower_user: current_user)
+    binding.pry
+    a = '123'
+    user = User.find(params[:id])
+    relationships = Relationship.find_by(followed: user, follower: current_user)
     relationships.destroy
     redirect_back(fallback_location: root_path)
   end
