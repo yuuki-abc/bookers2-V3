@@ -18,4 +18,9 @@ class User < ApplicationRecord
   validates :introduction, presence: true, on: :update
   validates :introduction, length: { maximum: 50 }
 
+  # def followed?(user)
+  #   current_user
+  #   favorites.where(user_id: user.id).exists?
+  # end # 要検証
+
 end
