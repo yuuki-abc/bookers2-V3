@@ -1,6 +1,7 @@
 class RelationshipsController < ApplicationController
   
-  # 課題 多重登録の防止
+  # 要検証 多重登録の防止
+  # 要検証 自分がフォロー
   def create
     relationships = Relationship.new(follower: current_user)
     relationships.followed = User.find(params[:user_id])
