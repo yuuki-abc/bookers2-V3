@@ -16,11 +16,6 @@ class User < ApplicationRecord
 
   validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
   validates :introduction, presence: true, on: :update
-  validates :introduction, length: { maximum: 50 }
-
-  # def followed?(user)
-  #   current_user
-  #   favorites.where(user_id: user.id).exists?
-  # end # 要検証
+  validates :introduction, length: { maximum: 50 } # 質問
 
 end
