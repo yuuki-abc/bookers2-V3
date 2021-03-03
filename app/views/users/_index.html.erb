@@ -3,6 +3,8 @@
     <tr>
       <th>image</th>
       <th>name</th>
+      <th>follows</th>
+      <th>followers</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -11,7 +13,8 @@
       <tr>
         <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
         <td><%= user.name %></td>
-
+        <td><%= user.follower.count %></td>
+        <td><%= user.followed.count %></td>
         <% if user.followed.pluck(:follower_id).include?(current_user.id) %>
           <td><%= link_to 'フォローを外す', user_relationships_path(user), method: :delete %></td>
         <% elsif user != current_user %>
