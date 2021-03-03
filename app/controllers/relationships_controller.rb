@@ -15,7 +15,7 @@ class RelationshipsController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:user_id])# 質問 なぜparams[:id]じゃとれないのか？
+    user = User.find(params[:user_id])# 質問 なぜparams[:id]じゃとれないのか？ そもそもparamsとは？
     relationships = Relationship.find_by(followed: user, follower: current_user)
     if relationships
       relationships.destroy

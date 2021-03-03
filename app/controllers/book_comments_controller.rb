@@ -31,5 +31,4 @@ class BookCommentsController < ApplicationController
         redirect_to books_path
       end
   end
-
 end
