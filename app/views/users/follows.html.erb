@@ -9,13 +9,29 @@
     </div>
 
     <div class='col-md-8 offset-md-1'>
-      <h2>follows</h2>
-      <!--ここから-->
-      <% users = @user.follower %>
-      <% users.each do |user| %>
-        <%= user.followed.name %>
-      <% end %>
-      <!--ここまで-->
+
+      <table class='table follows_table'>
+        <h2>follows</h2>
+        <thead>
+          <tr>
+            <th>img</th>
+            <th>name</th>
+            <th>link</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% users = @user.follower %>
+          <% users.each do |user| %>
+          <tr>
+            <td><%= attachment_image_tag(user.followed, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
+            <td><%= user.followed.name %></td>
+            <td><%= link_to 'Show', user_path(user.followed), class: "user_#{user.followed.id}" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
     </div>
   </div>
 </div>
